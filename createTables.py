@@ -44,10 +44,11 @@ CREATE TABLE IF NOT EXISTS candidate_enrollment (
     candidate_id INT NOT NULL,
     enrollment_ts DATETIME,
     worker_id INT,
-    job_id INT NOT NULL,
+    job_id INT,
     enrolled_ts DATETIME,
     FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id) ON DELETE CASCADE,
-    FOREIGN KEY (worker_id) REFERENCES workers(worker_id) ON DELETE SET NULL
+    FOREIGN KEY (worker_id) REFERENCES workers(worker_id) ON DELETE SET NULL,
+    FOREIGN KEY (job_id) REFERENCES jobs(job_id) ON DELETE SET NULL
 );
 """
 
@@ -84,6 +85,14 @@ def main():
 
     for table in tables_to_create:
         db.insert(query=table)
+
+    db.close()
+
+
+def delete_all_tables():
+    db = DbManager()
+
+    db.insert(query="DROP DATABASE inflowx;")
 
     db.close()
 

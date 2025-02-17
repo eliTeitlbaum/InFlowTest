@@ -3,21 +3,21 @@ from pandas import isnull, isna
 
 
 def validate_id(value, nan=True):
-    if isnull(value) or isna(value):
+    if isnull(value) or isna(value) or value is None:
         return nan
 
     return bool(re.match(r"^[1-9]\d*$", str(value)))
 
 
 def validate_str(value, nan=True):
-    if isnull(value) or isna(value):
+    if isnull(value) or isna(value) or value is None:
         return nan
 
     return bool(re.match(r"^[a-zA-Z\s]+$", str(value)))
 
 
 def validate_ts(value, nan=True):
-    if isnull(value) or isna(value):
+    if isnull(value) or isna(value) or value is None:
         return nan
 
     return bool(re.match(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$', str(value)))

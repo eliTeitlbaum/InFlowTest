@@ -9,7 +9,7 @@ class DbManager:
                 host="127.0.0.1",
                 user="eli",
                 password="3010",
-                database="inflowx"
+                database="inflow"
             )
 
             self.close_after = close_after
