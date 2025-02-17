@@ -54,7 +54,7 @@ class DbManager:
         except Error as e:
             print(f"Error in SQL select: {e}")
             return None
-        
+
         finally:
             if self.close_after:
                 self.close()
